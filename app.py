@@ -5,7 +5,9 @@ app = Flask(__name__)
 def example():
     name= "Юрий Комаров"
     number="2"
-    return render_template("example.html", name=name, number=number)
+    group="ФБИ-11"
+    course="3 курс"
+    return render_template("example.html", name=name, number=number, group=group, course=course)
 
 @app.route('/')
 @app.route("/index")
