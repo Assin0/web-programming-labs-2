@@ -55,16 +55,16 @@ def menu():
         </header>
 
         <ol>
-        <li><a href="http://127.0.0.1:5000/lab1" target="_blank">Первая лабораторная</a></li>
-        <li><a href="http://127.0.0.1:5000/lab2" target="_blank">Вторая лабораторная</a></li>
+        <li><a href="/lab1" target="_blank">Первая лабораторная</a></li>
+        <li><a href="/lab2" target="_blank">Вторая лабораторная</a></li>
         </ol>
 
         <h2>Реализованные роуты</h2>
 
         <ol>
-        <li><a href="http://127.0.0.1:5000/lab1/oak" target="_blank">/lab1/oak - дуб</a></li>
-        <li><a href="http://127.0.0.1:5000/lab1/student" target="_blank">/lab1/student - студент</a></li>
-        <li><a href="http://127.0.0.1:5000/lab1/python" target="_blank">/lab1/python - python</a></li>
+        <li><a href="/lab1/oak" target="_blank">/lab1/oak - дуб</a></li>
+        <li><a href="/lab1/student" target="_blank">/lab1/student - студент</a></li>
+        <li><a href="/lab1/python" target="_blank">/lab1/python - python</a></li>
         </ol>
 
         <footer>
@@ -95,7 +95,7 @@ def lab1():
         </div>
 
         <ol>
-        <li><a href="http://127.0.0.1:5000/menu">Меню<a/></li>
+        <li><a href="/menu">Меню<a/></li>
         </ol>
 
         <footer>
