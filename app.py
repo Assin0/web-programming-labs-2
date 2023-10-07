@@ -14,7 +14,19 @@ def example():
         {'name':'мандарины', 'price': 95},
         {'name':'манго', 'price': 321}
         ]
-    return render_template("example.html", name=name, number=number, group=group, course=course, fruits=fruits)
+    books = [
+        {'author':'Джоан Роулинг', 'name': 'Гарри Поттер и узник Азкабана', 'genre': 'Фантастика',  'pages': 544},
+        {'author':'Стивен Кинг', 'name': 'Зеленая миля', 'genre': 'Ужасы',  'pages': 384},
+        {'author':'Маргарет Митчелл', 'name': 'Унесенные ветром', 'genre': 'Роман',  'pages': 1088},
+        {'author':'Артур Конан Дойл', 'name': 'Шерлок Холмс', 'genre': 'Детектив',  'pages': 944},
+        {'author':'Нора Сакавич', 'name': 'Свита короля', 'genre': 'Роман',  'pages': 120},
+        {'author':'Мишель Пейвер', 'name': 'Гарри Поттер и Принц-полукровка', 'genre': 'Фантастика',  'pages': 976},
+        {'author':'Мосян Тунсю', 'name': 'Благословение небожителей. Том 1', 'genre': 'Фэнтези',  'pages': 416},
+        {'author':'Мосян Тунсю', 'name': 'Благословение небожителей. Том 3', 'genre': 'Фэнтези',  'pages': 384},
+        {'author':'Кэтрин Стокетт', 'name': 'Прислуга', 'genre': 'Роман',  'pages': 576},
+        {'author':'Александр Дюма', 'name': 'Граф Монте-Кристо', 'genre': 'Роман',  'pages': 1264}
+        ]
+    return render_template("example.html", name=name, number=number, group=group, course=course, fruits=fruits, books=books)
 
 @app.route('/')
 @app.route("/index")

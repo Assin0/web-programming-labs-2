@@ -20,9 +20,16 @@
         <br>
         45^8={{45**8}}
         <br>
+        <h2>Фрукты</h2>
         <ul>
             {% for f in fruits %}
             <li>{{ f.name }}: {{ f.price }} &#x20bd</li>
+            {% endfor %}
+        </ul>
+        <h2>Книги</h2>
+        <ul>
+            {% for b in books %}
+            <li>{{ b.author }} {{ b.name }} {{ b.genre }} {{ b.pages }}</li>
             {% endfor %}
         </ul>
     </main>
