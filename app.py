@@ -56,6 +56,7 @@ def menu():
 
         <ol>
         <li><a href="http://127.0.0.1:5000/lab1" target="_blank">Первая лабораторная</a></li>
+        <li><a href="http://127.0.0.1:5000/lab2" target="_blank">Вторая лабораторная</a></li>
         </ol>
 
         <h2>Реализованные роуты</h2>
