@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа №2{% endblock %}
+
+{% block main%}
+    <img src="{{ url_for('static', filename='buk1.jpg') }}">
+    <div>букет №1</div>
+    <img src="{{ url_for('static', filename='buk2.jpg') }}">
+    <div>букет №2</div>
+    <img src="{{ url_for('static', filename='buk3.jpg') }}">
+    <div>букет №3</div>
+    <img src="{{ url_for('static', filename='buk4.jpg') }}">
+    <div>букет №4</div>
+    <img src="{{ url_for('static', filename='buk5.jpg') }}">
+    <div>букет №5</div>
+{% endblock main%}
