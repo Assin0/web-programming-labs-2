@@ -1,6 +1,10 @@
 from flask import Flask, redirect, url_for, render_template
 app = Flask(__name__)
 
+@app.route("/lab2/")
+def lab2():
+    return render_template('lab2.html')
+
 @app.route("/lab2/example")
 def example():
     name= "Юрий Комаров"
