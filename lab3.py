@@ -7,6 +7,11 @@ def lab():
     return render_template('lab3.html')
 
 
+@lab3.route("/lab3/thanks")
+def thanks():
+    return render_template('thanks.html')
+
+
 @lab3.route("/lab3/form1")
 def form1():
     errors={}
@@ -18,3 +23,28 @@ def form1():
         errors['age'] = 'Заполните поле!'
     sex=request.args.get('sex')
     return render_template('form1.html', user=user, age=age, sex=sex, errors=errors)
+
+
+@lab3.route("/lab3/order")
+def order():
+    return render_template('order.html')
+
+@lab3.route("/lab3/pay")
+def pay():
+    price = 0
+    drink=request.args.get('drink')
+    # Пусть кофе стоит 120 рублей, черный чай 80 рублей, зеленый 70 рублей
+    if drink == 'cofee':
+        price = 120
+    elif drink == 'black-tea':
+        price = 80
+    else:
+        price = 70
+
+    # Добавка молока удорожает напиток на 30 рублей, а сахара на 10
+    if request.args.get('milk') == 'on':
+        price += 30
+    if request.args.get('sugar') == 'on':
+        price += 10
+
+    return render_template('pay.html', price=price)
