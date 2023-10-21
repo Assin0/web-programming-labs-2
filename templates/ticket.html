@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа №3{% endblock %}
+
+{% block main%}
+    <h1>Покупка билета</h1>
+
+    <form>
+
+        <div>Заполните данные</div>
+
+        <div>Ф.И.О пассажира:</div>
+
+        <label>
+            <input type="text" name="name">
+            <span class="error">{{errors.name}}</span>
+        </label>
+
+        <div>Тип билета:</div><span class="error">{{errors.type}}</span>
+
+        <label>
+            <input type="radio" value="child" name="type" checked>детский
+        </label>
+        <label>
+            <input type="radio" value="old" name="type">взрослый
+        </label>
+
+        <div>Полка:</div><span class="error">{{errors.polka}}</span>
+
+        <label>
+            <input type="radio" value="verh" name="polka" checked>верхняя
+        </label>
+        <label>
+            <input type="radio" value="verhbok" name="polka">верхняя боковая
+        </label>
+        <label>
+            <input type="radio" value="niz" name="polka" checked>нижняя
+        </label>
+        <label>
+            <input type="radio" value="nizbok" name="polka">нижняя боковая
+        </label>
+
+        <div>Багаж:</div><span class="error">{{errors.bagag}}</span>
+
+        <label>
+            <input type="radio" value="estbg" name="bagag">есть
+        </label>
+        <label>
+            <input type="radio" value="netbg" name="bagag">нету
+        </label>
+
+        <div>Ваш возраст</div><span class="error">{{errors.ages}}</span>
+
+        <label>
+            <input type="number" placeholder="сколько вам лет?" name="ages" value="{{ages or ''}}">
+        </label>
+
+        <div>Пункт выезда</div><span class="error">{{errors.otkuda}}</span>
+
+        <label>
+            <input type="text" name="otkuda">
+        </label>
+
+        <div>Пункт назначения</div><span class="error">{{errors.kuda}}</span>
+
+        <label>
+            <input type="text" name="kuda">
+        </label>
+
+        <div>Дата поездки</div><span class="error">{{errors.date}}</span>
+
+        <label>
+            <input type="date" name="date">
+        </label>
+
+        <div>
+            <button type="submit">Оплатить</button>
+        </div>
+    </form>
+    
+{% endblock main%}

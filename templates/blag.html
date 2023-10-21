@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа №3{% endblock %}
+
+{% block main%}
+
+    {% if name and type and polka and bagag and ages and otkuda and kuda and date %}
+
+    <h1>Спасибо за покупку, хорошего пути</h1>
+
+    {% else %}
+
+    <h1>Вы не заполнили все данные</h1>
+
+{% endblock main%}
