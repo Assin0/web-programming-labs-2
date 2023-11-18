@@ -26,3 +26,31 @@ def login():
         password = password
         return render_template('login.html', error=error, username=username, password=password)
     
+@lab4.route("/lab4/holo", methods = ['GET', 'POST'])
+def holo():
+    if request.method == 'GET':
+        return render_template('holo.html')
+    
+    temp = int(request.form.get('temp'))
+
+    if temp <= -12:
+        error = 'Не удалось установить температуру - слишком низкое значение'
+        return render_template('holo.html', error=error)
+    elif temp >= -1:
+        error = 'Не удалось установить температуру - слишком высокое значение'
+        return render_template('holo.html', error=error)
+    elif -9 >= temp > -12:
+        error = 'Установлена температура '
+        sneg = '***'
+        return render_template('holo.html', temp=temp, error=error, sneg=sneg)
+    elif -5 >= temp >= -8:
+        error = 'Установлена температура '
+        sneg = '**'
+        return render_template('holo.html', temp=temp, error=error, sneg=sneg)
+    elif -1 > temp >= -4:
+        error = 'Установлена температура '
+        sneg = '*'
+        return render_template('holo.html', temp=temp, error=error, sneg=sneg)
+    else:
+        error = 'Не установлена температура '
+        return render_template('holo.html', error=error)
