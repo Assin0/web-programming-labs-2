@@ -66,3 +66,88 @@ def cookies():
         'Location': '/lab4/cookies'
     }
     return '', 303, headers
+@lab4.route("/lab4/zerno", methods = ['GET', 'POST'])
+def zerno():
+    if request.method == 'GET':
+        return render_template('zerno.html')
+    
+    zerno = request.form.get('zerno')
+    vec = request.form.get('vec')
+    cena = 0
+
+    if zerno == 'ячмень':
+        cena = 12000
+        if vec == '':
+            zakaz = 'Не задано значение'
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 500:
+            zakaz = "Такого объема нет в наличии"
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 50:
+            price = int(cena)*int(vec)*0.9
+            zakaz = "Ваш заказ с 10% скидкой"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+        elif int(vec) <= 0:
+            zakaz = "Неверное значение"
+            return render_template('zerno.html', zakaz=zakaz)
+        else:
+            price = int(cena)*int(vec)
+            zakaz = "Ваш заказ:"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+    elif zerno == 'овёс':
+        cena = 8500
+        if vec == '':
+            zakaz = 'Не задано значение'
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 500:
+            zakaz = "Такого объема нет в наличии"
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 50:
+            price = int(cena)*int(vec)*0.9
+            zakaz = "Ваш заказ с 10% скидкой"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+        elif int(vec) <= 0:
+            zakaz = "Неверное значение"
+            return render_template('zerno.html', zakaz=zakaz)
+        else:
+            price = int(cena)*int(vec)
+            zakaz = "Ваш заказ:"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+    elif zerno == 'пшеница':
+        cena = 8700
+        if vec == '':
+            zakaz = 'Не задано значение'
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 500:
+            zakaz = "Такого объема нет в наличии"
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 50:
+            price = int(cena)*int(vec)*0.9
+            zakaz = "Ваш заказ с 10% скидкой"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+        elif int(vec) <= 0:
+            zakaz = "Неверное значение"
+            return render_template('zerno.html', zakaz=zakaz)
+        else:
+            price = int(cena)*int(vec)
+            zakaz = "Ваш заказ:"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+    elif zerno == 'рожь':
+        cena = 14000
+        if vec == '':
+            zakaz = 'Не задано значение'
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 500:
+            zakaz = "Такого объема нет в наличии"
+            return render_template('zerno.html', zakaz=zakaz)
+        elif int(vec) > 50:
+            price = int(cena)*int(vec)*0.9
+            zakaz = "Ваш заказ с 10% скидкой"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)
+        elif int(vec) <= 0:
+            zakaz = "Неверное значение"
+            return render_template('zerno.html', zakaz=zakaz)
+        else:
+            price = int(cena)*int(vec)
+            zakaz = "Ваш заказ:"
+            return render_template('zerno.html', price=price, zakaz=zakaz, zerno=zerno, vec=vec)    
