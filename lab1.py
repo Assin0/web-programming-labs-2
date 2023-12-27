@@ -26,6 +26,7 @@ def menu():
         <li><a href="/lab2" target="_blank">Вторая лабораторная</a></li>
         <li><a href="/lab3" target="_blank">Третья лабораторная</a></li>
         <li><a href="/lab4" target="_blank">Четвертая лабораторная</a></li>
+        <li><a href="/lab5" target="_blank">Пятая лабораторная</a></li>
         </ol>
 
         <h2>Реализованные роуты</h2>
