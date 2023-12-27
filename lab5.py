@@ -126,17 +126,17 @@ def zam():
 
     userID = session.get("id")
 
-if userID is not None:
-    if request.method == "GET":
-        return render_template('zametki.html')
+    if userID is not None:
+        if request.method == "GET":
+            return render_template('zametki.html')
     
-    if request.method == "POST":
-        text_article = request.form.get("text_article")
-        title = request.form.get('title_article')
+        if request.method == "POST":
+            text_article = request.form.get("text_article")
+            title = request.form.get('title_article')
 
-        if len(text_article) == 0:
-            errors = "Заполните текст"
-            return render_template('zametki.html', errors=errors)
+            if len(text_article) == 0:
+                errors = "Заполните текст"
+                return render_template('zametki.html', errors=errors)
         
         conn= dbConnect()
         cur = conn.cursor()
@@ -150,4 +150,4 @@ if userID is not None:
 
         return redirect (f'/lab5/zametki/{new_article_id}')
     
-return redirect('/lab5/login')
+    return redirect('/lab5/log')
