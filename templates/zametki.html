@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block lab %}{{ username }}{% endblock %}
+
+{% block main%}
+<div>
+<h1>Новая заметка</h1>
+
+    <form method="POST">
+        <input name="title_article" type="text" placeholder="Название статьи">
+        <textarea name="text_article" placeholder="Текст статьи" rows="20">
+</textarea>
+        <input type="sumbit" value="Apply"/>
+    </form>
+</div>
+{% endblock main%}

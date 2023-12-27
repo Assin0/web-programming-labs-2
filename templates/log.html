@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block lab %}{{ username }}{% endblock %}
+
+{% block main%}
+<form method="POST">
+    <h1>Страница авторизации</h1>
+
+    <div>
+        <input type="text" name="username" placeholder="username">
+        <label for="username">Логин</label>
+        <span class="error">{{ errors }}</span>
+    </div>
+
+    <div>
+        <input type="text" name="password" placeholder="password">
+        <label for="password">Пароль</label>
+    </div>
+    <button type="submit">Войти</button>
+</form>
+{% endblock main%}
