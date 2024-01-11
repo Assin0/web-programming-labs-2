@@ -62,10 +62,8 @@ function pay() {
         } 
         else {
             document.querySelector('#error_message').innerHTML = '';
-            document.querySelector('#lol').innerHTML = `${data.result}`;
             document.querySelector('#pay').style.display = 'none';
             document.querySelector('#price').style.display = 'none';
-            document.querySelector('#pay_back').style.display = '';
         }
     })
 
