@@ -2,22 +2,27 @@
 
 {% block lab %}Лабораторная работа №4{% endblock %}
 
-{% block main%}
-<h1>Вход</h1>
-<h2>Пожалуйста, авторизуйтесь</h2>
-<div class="error">{{ error }}</div>
+{% block main %}
+<h1>Вход:</h1>
+<h2>Пожалуйста авторизуйтесь</h2>
+<div>{{ error }}</div>
 <form method="post">
     <div>
         <label for="username">Пользователь:</label>
-        <input type="text" id="username" name="username" value="{{ username }}">
+        <input type="text" id="username" name="username" value="{{username}}">
+        {% if not (username or password) and request.method == 'POST' %}
+        <span class='error' style="top: 1.4vw;">{{ errors[0] }}</span> 
+        {% endif %}
     </div>
     <div>
         <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password" value="{{ password }}">
+        <input type="password" id="password" name="password" value="{{password}}">
     </div>
     <div>
         <button type="submit">Войти</button>
         <button type="reset">Отмена</button>
     </div>
+    
+
 </form>
-{% endblock main%}
+{% endblock %}

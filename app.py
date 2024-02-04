@@ -36,3 +36,13 @@ app.register_blueprint(lab6)
 app.register_blueprint(lab7)
 app.register_blueprint(lab8)
 app.register_blueprint(lab9)
+
+login_manager = LoginManager()
+
+login_manager.login_veiw = "lab6.login"
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_users(user_id):
+    return users.query.get(int(user_id))
