@@ -62,10 +62,47 @@ function pay() {
         } 
         else {
             document.querySelector('#error_message').innerHTML = '';
+            document.querySelector('#lol').innerHTML = `${data.result}`;
             document.querySelector('#pay').style.display = 'none';
             document.querySelector('#price').style.display = 'none';
+            document.querySelector('#pay_back').style.display = '';
         }
     })
 
+
+}
+
+
+function refund() {
+    const card_num =  savedCardNum;
+    const drink = document.querySelector('[name=drink]:checked').value;
+    const milk = document.querySelector('[name=milk]').checked;
+    const sugar = document.querySelector('[name=sugar]').checked;
+
+    
+    const obj = {
+        "method": "refund",
+        "params": {
+            drink: drink,
+            milk: milk,
+            sugar: sugar,
+            card_num: card_num,
+        }
+    };
+
+    fetch('/lab7/api', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(obj)
+    })
+
+    .then(function(resp) {
+        return resp.json();
+    })
+
+    .then(function(data) {
+            document.querySelector('#lol').innerHTML = `${data.result}`;
+            document.querySelector('#back').style.display = ''
+    })
 
 }

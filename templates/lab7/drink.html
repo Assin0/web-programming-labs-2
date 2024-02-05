@@ -10,6 +10,7 @@
 <h1>Заказ напитка</h1>
 
     <div>Напиток:</div>
+    <br>
     <label>
         <input type="radio" value="coffe" name="drink" checked>кофе 
     </label>
@@ -19,8 +20,11 @@
     <label>
         <input type="radio" value="green-tea" name="drink" checked>зеленый чай
     </label>
+    <br>
+    <br>
     
     <div>Добавки:</div>
+    <br>
     <label>
         <input type="checkbox" name="milk" checked>молоко 
     </label>
@@ -34,7 +38,10 @@
     <div id="price"></div>
 
     <div id="pay" style="display: none;">
+    <br>
+
         <div>Номер банковской карты:</div>
+        <br>
         <label>
             <input type="text" name="card_num">
         </label>
@@ -44,13 +51,26 @@
             <input type="text" name="name">
         </label>
         
+        <br>
         <div>Номер CVV:</div>
+        <br>
         <label>
-            <input type="text" name="cvv" size="3">
+            <input type="text" name="cvv">
         </label>
 
         <div>
             <button onclick="pay()" type="button">Оплатить</button>  
         </div>
+
+        <div id="error_message"></div>
     </div>
+
+        <div id="lol"></div>
+        <div id="pay_back" style="display: none">
+            <button onclick="refund()" type="button">Отмена оплаты</button> 
+            <button style=" display: none;" id="">
+                <a href="/lab7/drink" style="text-decoration: none;" id="back">Сделать новый заказ</a>
+            </button>
+        </div>
+     
 {% endblock %}
