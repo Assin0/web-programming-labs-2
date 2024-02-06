@@ -32,3 +32,12 @@ def del_course(course_num):
         return '', 204
     else:
         return 'Нет такого курса', 404
+    
+@lab8.route('/lab8/api/courses/<int:course_num>', methods=['PUT'])
+def put_course(course_num):
+    course = request.get_json()
+    courses[course_num] = course
+    if course_num in range(0, len(courses)):
+        return courses[course_num]
+    else:
+        return "Out Of Range", 404
