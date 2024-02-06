@@ -24,3 +24,11 @@ def get_course(course_num):
         return courses[course_num]
     else:
         return "Нет такого курса", 404
+    
+@lab8.route('/lab8/api/courses/<int:course_num>', methods=['DELETE'])
+def del_course(course_num):
+    if course_num in range(0, len(courses)):
+        del courses[course_num]
+        return '', 204
+    else:
+        return 'Нет такого курса', 404
