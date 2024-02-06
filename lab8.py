@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, session, jsonify
 import psycopg2
+from datetime import datetime
 
 lab8 = Blueprint('lab8', __name__)
 
@@ -41,3 +42,9 @@ def put_course(course_num):
         return courses[course_num]
     else:
         return "Out Of Range", 404
+    
+@lab8.route('/lab8/api/courses/', methods=['POST'])
+def add_course():
+    course = request.get_json()
+    courses.append(course)
+    return {'num': len(courses) - 1}
