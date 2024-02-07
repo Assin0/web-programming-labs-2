@@ -12,6 +12,7 @@ from lab6 import lab6
 from lab7 import lab7
 from lab8 import lab8
 from lab9 import lab9
+from rgz import rgz
 
 app = Flask(__name__)
 
@@ -36,6 +37,7 @@ app.register_blueprint(lab6)
 app.register_blueprint(lab7)
 app.register_blueprint(lab8)
 app.register_blueprint(lab9)
+app.register_blueprint(rgz)
 
 login_manager = LoginManager()
 

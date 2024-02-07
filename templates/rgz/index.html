@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block lab %} Расчетно-графическая работа {% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='rgz/rgz.js') }}"></script>
+<style>
+.modal {
+    display: none;
+    z-index: 100;
+    box-shadow: 3px 3px 5px black;
+    width: 400px;
+    left: 23%;
+    position: fixed;
+    padding: 20px;
+    top: 22%;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+    <h1>Склад</h1>
+
+    <article class="content" >
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Артикул</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="tovar-list"></tbody>
+    </table>
+    </article>
+
+    <script>
+        filltovarList();
+    </script>
+
+    <div>
+        <button onclick="addtovar()">Добавить товар</button>
+    </div>
+
+    <div class="modal">
+        <input type="hidden" id="num">
+        <label>
+            Название:
+            <input type="text" id="name">
+        </label><br>
+
+        <label>
+            Количество:
+            <input type="number" id="count" min="0">
+        </label><br>
+
+        <label>
+            Артикул:
+            <input type="number" id="article" min="0">
+        </label><br>
+
+        <button onclick="sendtovar()">OK</button>
+        <button onclick="cancel()">Отмена</button>
+    </div>
+{% endblock %}

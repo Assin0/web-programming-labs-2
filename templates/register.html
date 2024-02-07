@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block lab %}{{ username }}{% endblock %}
+{% block lab %}<a href="/rgz">Авторизация</a>{{ username }}{% endblock %}
 
 {% block main %}
 
@@ -10,11 +10,11 @@
     <h1>Страница регистрации</h1>
 
     <div style="position: relative; height: 2vw;">
-        <input class='input_register' style='height: 3vw; left: 6px; position: relative;' type="text" name="username" placeholder="Логин" value="{{ username or '' }}">
+        <input class='input_register' style='height: 2vw; position: relative;' type="text" name="username" placeholder="Логин" value="{{ username or '' }}">
     </div>
     <br>
     <div style="position: relative; height: 2vw">
-        <input class='input_register' style='height: 3vw' type="text" name="password" placeholder="Пароль" value="{{ password or '' }}">
+        <input class='input_register' style='height: 2vw' type="text" name="password" placeholder="Пароль" value="{{ password or '' }}">
     </div>
     <br>
     <br>
@@ -24,12 +24,12 @@
     
 {% if not (username or password) and request.method == 'POST' %}
 <div>
-    <label>{{ errors[0] }}</label>
+    <span class='error'>{{ errors[0] }}</span>
 </div>
 
 {% elif not (username or password) and request.method == 'POST' %}
 <div>
-    <label>{{ errors[0] }}</label>
+    <span class='error'>{{ errors[0] }}</span>
 </div>
 {% endif %}
 
