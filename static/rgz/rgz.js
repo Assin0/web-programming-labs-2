@@ -115,6 +115,9 @@ function fillzakazList() {
             let tdName = document.createElement('td');
             tdName.innerText = zakazi[i].zname || 'Нет данных';
 
+            let tdStatus = document.createElement('td');
+            tdStatus.innerText = zakazi[i].zstatus || 'Нет данных';
+
             let tdCount = document.createElement('td');
             tdCount.innerText = zakazi[i].zcount || 'Нет данных';
 
@@ -140,6 +143,7 @@ function fillzakazList() {
             tr.append(tdName);
             tr.append(tdCount);
             tr.append(tdArticle);
+            tr.append(tdStatus);
             tr.append(tdActions)
 
             tbody.append(tr);
@@ -174,6 +178,7 @@ function addzakaz() {
     document.getElementById('zname').value = '';
     document.getElementById('zcount').value = '';
     document.getElementById('zarticle').value = '';
+    document.getElementById('zstatus').value = '';
     zshowModal();
 }
 
@@ -183,6 +188,7 @@ function sendzakaz() {
         zname: document.getElementById('zname').value,
         zcount: document.getElementById('zcount').value,
         zarticle: document.getElementById('zarticle').value,
+        zstatus: document.getElementById('zstatus').value,
     }
     const url = `/rgz/api/zakazi/${num}`;
     const method = num ? 'PUT' : 'POST';
@@ -203,5 +209,6 @@ function editzakaz(znum, zakaz) {
     document.getElementById('zname').value = zakaz.zname;
     document.getElementById('zcount').value = zakaz.zcount;
     document.getElementById('zarticle').value = zakaz.zarticle;
+    document.getElementById('zstatus').value = zakaz.zstatus;
     zshowModal();
 }

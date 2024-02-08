@@ -33,7 +33,7 @@
     <div class="tovarii" style="top: 100px;">
     <h1>Склад</h1>
 
-    <table>
+    <table border="solid">
         <thead>
             <tr>
                 <th>Название</th>
@@ -58,14 +58,14 @@
     <div class="zakazii" style="position: absolute; left: 900px; top: 100px;">
     <h1>Заказы</h1>
 
-    <table>
+    <table border="solid">
         <thead>
             <tr>
                 <th>Название</th>
                 <th>Количество</th>
                 <th>Артикул</th>
-                <th>Действие</th>
                 <th>Статус</th>
+                <th>Действие</th>
             </tr>
         </thead>
         <tbody id="zakaz-list"></tbody>
@@ -112,6 +112,11 @@
         <label>
             Артикул:
             <input type="number" id="zarticle" min="0">
+        </label><br>
+
+        <label>
+            Статус:
+            <input type="status" id="zstatus">
         </label><br>
 
         <button onclick="sendzakaz()">OK</button>
