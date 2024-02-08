@@ -27,25 +27,25 @@ def checkarticles():
 def register():
     errors = []
     if request.method == "GET":
-        return render_template("register.html", errors=errors)
+        return render_template("register6.html", errors=errors)
 
     username_form = request.form.get("username")
 
     if username_form == '':
         errors.append("Пустое имя")
-        return render_template("register.html", errors=errors)
+        return render_template("register6.html", errors=errors)
 
     password_form = request.form.get("password")
 
     if len(password_form) < 5 or password_form == '':
         errors.append("Пароль меньше пяти символов")
-        return render_template("register.html", errors=errors)
+        return render_template("register6.html", errors=errors)
 
     isUserExist = users.query.filter_by(username=username_form).first()
 
     if isUserExist is not None:
         errors.append("Пользователь уже существует")
-        return render_template("register.html", errors=errors)  # Вывод ошибки
+        return render_template("register6.html", errors=errors)  # Вывод ошибки
 
     hashedPswd = generate_password_hash(password_form, method='pbkdf2')
 
@@ -61,22 +61,22 @@ def register():
 def login():
     errors = []
     if request.method == "GET":
-        return render_template("login.html", errors=errors)
+        return render_template("login6.html", errors=errors)
 
     username_form = request.form.get("username")
     password_form = request.form.get("password")
 
     if username_form == '' and password_form == '':
         errors.append("Поля не заполнены")
-        return render_template("login.html", errors=errors)
+        return render_template("login6.html", errors=errors)
 
     elif username_form == '':
         errors.append("Поле username_form не заполнено")
-        return render_template("login.html", errors=errors)
+        return render_template("login6.html", errors=errors)
 
     elif password_form == '':
         errors.append("Поле password_form не заполнено")
-        return render_template("login.html", errors=errors)
+        return render_template("login6.html", errors=errors)
 
     my_user = users.query.filter_by(username=username_form).first()
 
@@ -86,10 +86,10 @@ def login():
             return redirect("/lab6/articles")
         else:
             errors.append("Неправильный пароль")
-            return render_template("login.html", errors=errors)
+            return render_template("login6.html", errors=errors)
     else:
         errors.append("Пользователя не существует")
-        return render_template("login.html", errors=errors)
+        return render_template("login6.html", errors=errors)
     
 @lab6.route("/lab6/articles/")
 @login_required
