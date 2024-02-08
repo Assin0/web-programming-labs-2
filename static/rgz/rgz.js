@@ -102,3 +102,106 @@ function edittovar(num, tovar) {
     showModal();
 }
 
+function fillzakazList() {
+    fetch('/rgz/api/zakazi/')
+    .then(function (data) {
+        return data.json();
+    })
+    .then(function (zakazi) {
+        let tbody = document.getElementById('zakaz-list');
+        tbody.innerHTML = '';
+        for(let i = 0; i <zakazi.length; i++) {
+            tr = document.createElement('tr');
+            let tdName = document.createElement('td');
+            tdName.innerText = zakazi[i].zname || 'Нет данных';
+
+            let tdCount = document.createElement('td');
+            tdCount.innerText = zakazi[i].zcount || 'Нет данных';
+
+            let tdArticle = document.createElement('td');
+            tdArticle.innerText = zakazi[i].zarticle || 'Нет данных';
+
+            let editButton = document.createElement('button')
+            editButton.innerText = 'редактировать';
+            editButton.onclick = function() {
+                editzakaz(i, zakazi[i]);
+            }
+
+            let delButton = document.createElement('button')
+            delButton.innerText = 'удалить';
+            delButton.onclick = function() {
+                deletezakaz(i);
+            };
+
+            let tdActions = document.createElement('td');
+            tdActions.append(editButton);
+            tdActions.append(delButton);
+            
+            tr.append(tdName);
+            tr.append(tdCount);
+            tr.append(tdArticle);
+            tr.append(tdActions)
+
+            tbody.append(tr);
+            }
+    })
+      
+}
+
+function deletezakaz(num) {
+    if(! confirm('Вы точно хотите удалить данный заказ?'))
+        return;
+
+    fetch(`/rgz/api/zakazi/${num}`, {method: "DELETE"})
+    .then(function () {
+        fillzakazList();
+    });
+}
+
+function zshowModal() {
+    document.querySelector('div.zmodal').style.display = 'block';
+}
+function zhideModal() {
+    document.querySelector('div.zmodal').style.display = 'none'
+}
+
+function zcancel() {
+    zhideModal();
+}
+
+function addzakaz() {
+    document.getElementById('znum').value = '';
+    document.getElementById('zname').value = '';
+    document.getElementById('zcount').value = '';
+    document.getElementById('zarticle').value = '';
+    zshowModal();
+}
+
+function sendzakaz() {
+    const num = document.getElementById('znum').value;
+    const zakaz = {
+        zname: document.getElementById('zname').value,
+        zcount: document.getElementById('zcount').value,
+        zarticle: document.getElementById('zarticle').value,
+    }
+    const url = `/rgz/api/zakazi/${num}`;
+    const method = num ? 'PUT' : 'POST';
+    fetch(url, {
+        method:method,
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(zakaz)
+    })
+    .then(function() {
+        fillzakazList();
+        zhideModal();
+    });
+}
+
+
+function editzakaz(znum, zakaz) {
+    document.getElementById('znum').value = znum;
+    document.getElementById('zname').value = zakaz.zname;
+    document.getElementById('zcount').value = zakaz.zcount;
+    document.getElementById('zarticle').value = zakaz.zarticle;
+    zshowModal();
+}

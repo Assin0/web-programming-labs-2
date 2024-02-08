@@ -145,3 +145,45 @@ def add_tovar():
     tovar = request.get_json()
     tovari.append(tovar)
     return {'num': len(tovari) - 1}
+
+zakazi = [
+    {"zname": "пылесос", "zcount": 3, "zarticle": 111, "zstatus": "не оплачен"},
+    {"zname": "пылесос", "zcount": 5, "zarticle": 112, "zstatus": "не оплачен"},
+    {"zname": "пылесос", "zcount": 24, "zarticle": 113, "zstatus": "не оплачен"},
+    {"zname": "пылесос", "zcount": 178, "zarticle": 114, "zstatus": "оплачен"},
+    {"zname": "пылесос", "zcount": 123, "zarticle": 115, "zstatus": "оплачен"},
+]
+
+@rgz.route('/rgz/api/zakazi/', methods=['GET'])
+def get_zakazi():
+    return jsonify(zakazi)
+
+@rgz.route('/rgz/api/zakazi/<int:zakaz_num>', methods=['GET'])
+def get_zakaz(zakaz_num):
+    if zakaz_num in range(0, len(zakazi)):
+        return zakazi[zakazi]
+    else:
+        return "Нет такого заказа", 404
+    
+@rgz.route('/rgz/api/zakazi/<int:zakaz_num>', methods=['DELETE'])
+def del_zakaz(zakaz_num):
+    if zakaz_num in range(0, len(zakazi)):
+        del zakazi[zakaz_num]
+        return '', 204
+    else:
+        return 'Нет такого заказа', 404
+
+@rgz.route('/rgz/api/zakazi/<int:zakaz_num>', methods=['PUT'])
+def put_zakaz(zakaz_num):
+    zakaz = request.get_json()
+    zakazi[zakaz_num] = zakaz
+    if zakaz_num in range(0, len(zakazi)):
+        return zakazi[zakaz_num]
+    else:
+        return "Нет такого заказа", 404
+    
+@rgz.route('/rgz/api/zakazi/', methods=['POST'])
+def add_zakaz():
+    zakaz = request.get_json()
+    zakazi.append(zakaz)
+    return {'num': len(zakazi) - 1}
